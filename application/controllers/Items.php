@@ -32,8 +32,14 @@ class Items extends CI_Controller {
 		$this->Item->add_to_wishlist($this->input->post());
 		redirect('/dashboard');
 	}
-	public function item_view(){
-		$this->item->get_item_names();
+	public function item_view($id){
+		$wishers = $this->Item->get_item_names($id);
+		$this->load->view('/item_view', array("wishers"=>$wishers));
+	}
+	public function remove()
+	{
+		$this->Item->remove($this->input->post());
+		return redirect('/dashboard');
 	}
 	
 }

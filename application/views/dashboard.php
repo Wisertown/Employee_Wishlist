@@ -21,14 +21,14 @@
 			<? foreach($my_list as $my_item) { ?>
 				<tr>
 					<td>
-						<a href="/item_view/<?php $my_item['item'] ?>"><p><?= $my_item['item'] ?></p></a>
+						<a href="/item_view/<?= $my_item['it_id'] ?>"><p><?= $my_item['item'] ?></p></a>
 					</td>
 					<td><?= $my_item['name'] ?></td>
 					<?php $date = strtotime($my_item["created_at"]); ?>
 					<td><?= date('M d Y', $date) ?></td>
 					<td>
-						<form action="/logins/remove_from_wishlist" method="post">
-			        		<input type="hidden" value="<?= $my_item['id'] ?>" name="wish_id">
+						<form action="/Items/remove" method="post">
+			        		<input type="hidden" value="<?= $my_item['it_id'] ?>" name="it_id">
 			        		<input type="submit" value="Remove from my Wishlist">
 			        	</form>
 					</td>
@@ -50,14 +50,14 @@
 			<? foreach($others_list as $others_item) { ?>
 				<tr>
 					<td>
-						<a href="/item_view/<?= $others_item['item'] ?>"><p><?= $others_item['item'] ?></p></a>
+						<a href="/item_view/<?= $others_item['it_id'] ?>"><p><?= $others_item['item'] ?></p></a>
 					</td>
 					<td><?= $others_item['name'] ?></td>
 					<?php $date = strtotime($others_item['created_at']); ?>
 					<td><?= date('M d Y', $date) ?></td>
 					<td>
 						<form action="/Items/add_to_wishlist" method="post">
-			        		<input type="hidden" value="<?= $others_item['id'] ?>" name="item_id">
+			        		<input type="hidden" value="<?= $others_item['it_id'] ?>" name="it_id">
 			        		<input type="submit" value="Add to my Wishlist">
 			        	</form>
 					</td>
